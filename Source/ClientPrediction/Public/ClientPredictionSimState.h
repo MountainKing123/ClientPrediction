@@ -610,8 +610,8 @@ namespace ClientPrediction {
             if (CurrentCollisionMode != ECollisionEnabled::QueryAndProbe) {
                 CachedCollisionMode = CurrentCollisionMode;
             }
-
-            UpdatedComponent->SetCollisionEnabled(ECollisionEnabled::QueryAndProbe);
+            
+            // UpdatedComponent->SetCollisionEnabled(ECollisionEnabled::QueryAndProbe);
 
             Handle.SetX(LastInterpolatedState.PhysState.X);
             Handle.SetR(LastInterpolatedState.PhysState.R);
@@ -623,7 +623,7 @@ namespace ClientPrediction {
 
         if (LastInterpolatedState.bIsFinalState) {
             if (SimRole == ROLE_SimulatedProxy) {
-                UpdatedComponent->SetCollisionEnabled(CachedCollisionMode);
+                // UpdatedComponent->SetCollisionEnabled(CachedCollisionMode);
             }
 
             UpdatedComponent->SyncComponentToRBPhysics();

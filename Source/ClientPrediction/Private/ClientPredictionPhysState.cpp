@@ -5,10 +5,22 @@
 namespace ClientPrediction {
     bool FPhysState::ShouldReconcile(const FPhysState& State) const {
         if (State.ObjectState != ObjectState) { return true; }
-        if ((State.X - X).Size() > ClientPredictionPositionTolerance) { return true; }
-        if ((State.V - V).Size() > ClientPredictionVelocityTolerance) { return true; }
-        if ((State.R - R).Size() > ClientPredictionRotationTolerance) { return true; }
-        if ((State.W - W).Size() > ClientPredictionAngularVelTolerance) { return true; }
+        if ((State.X - X).Size() > ClientPredictionPositionTolerance)
+        {
+            return true;
+        }
+        if ((State.V - V).Size() > ClientPredictionVelocityTolerance)
+        {
+            return true;
+        }
+        if ((State.R - R).Size() > ClientPredictionRotationTolerance)
+        {
+            return true;
+        }
+        if ((State.W - W).Size() > ClientPredictionAngularVelTolerance)
+        {
+            return true;
+        }
 
         return false;
     }
