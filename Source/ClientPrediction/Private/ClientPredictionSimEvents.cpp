@@ -1,6 +1,8 @@
 ﻿#include "ClientPredictionSimEvents.h"
 
 namespace ClientPrediction {
+    EventId FEventIds::kNextEventId = 0;
+
     void USimEvents::ConsumeEvents(const FBundledPackets& Packets, Chaos::FReal SimDt) {
         TArray<FEventLoader> AuthorityEvents;
         Packets.Bundle().Retrieve(AuthorityEvents, FEventLoaderUserdata{Factories, SimDt});

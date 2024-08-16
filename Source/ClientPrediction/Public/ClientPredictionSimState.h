@@ -85,7 +85,7 @@ namespace ClientPrediction {
     private:
         using InputType = typename Traits::InputType;
         using StateType = typename Traits::StateType;
-        using WrappedState = typename FWrappedState<StateType>;
+        using WrappedState = FWrappedState<StateType>;
 
     public:
         virtual ~USimState() override = default;

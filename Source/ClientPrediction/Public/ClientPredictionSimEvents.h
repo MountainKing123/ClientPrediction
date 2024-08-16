@@ -20,9 +20,7 @@ namespace ClientPrediction {
             return kEventId;
         }
     };
-
-    EventId FEventIds::kNextEventId = 0;
-
+    
     struct FEventWrapperBase {
         virtual ~FEventWrapperBase() = default;
         EventId EventId = INDEX_NONE;
