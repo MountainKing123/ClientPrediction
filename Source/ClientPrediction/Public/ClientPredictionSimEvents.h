@@ -12,7 +12,7 @@ namespace ClientPrediction {
     using EventId = uint8;
 
     struct FEventIds {
-        static EventId kNextEventId;
+        inline static EventId kNextEventId = 0;
 
         template <typename EventType>
         static EventId GetId() {

@@ -514,7 +514,7 @@ namespace ClientPrediction {
         const int32 SolverResimTick = (RewindData->GetResimFrame() == INDEX_NONE) ? RewindTick : FMath::Min(RewindTick, RewindData->GetResimFrame());
         RewindData->SetResimFrame(SolverResimTick);
 
-        UE_LOG(LogClientPrediction, Warning, TEXT("Queueing correction on %d (Server tick %d)"), RewindTick, LatestAuthorityState.ServerTick);
+        UE_LOG(LogClientPrediction, Warning, TEXT("Queueing correction on %d (Server tick %d) for %s"), RewindTick, LatestAuthorityState.ServerTick, *PhysObject->GetBodyName().ToString());
         return RewindTick;
     }
 
@@ -532,7 +532,7 @@ namespace ClientPrediction {
         Handle->SetR(PhysState.R);
         Handle->SetW(PhysState.W);
 
-        UE_LOG(LogClientPrediction, Log, TEXT("Applying correction on %d"), PendingCorrection->LocalTick);
+        UE_LOG(LogClientPrediction, Log, TEXT("Applying correction on %d for %s"), PendingCorrection->LocalTick, *TickInfo.UpdatedComponent->GetName());
         PendingCorrection.Reset();
     }
 
@@ -599,7 +599,7 @@ namespace ClientPrediction {
         // Sim proxies have custom logic since they aren't really simulated.
         if (SimRole == ROLE_SimulatedProxy) {
             Chaos::FRigidBodyHandle_External& Handle = BodyInstance->GetPhysicsActorHandle()->GetGameThreadAPI();
-            Handle.SetObjectState(Chaos::EObjectStateType::Kinematic);
+            // Handle.SetObjectState(Chaos::EObjectStateType::Kinematic);
 
             const ECollisionEnabled::Type CurrentCollisionMode = UpdatedComponent->GetCollisionEnabled();
             if (CurrentCollisionMode != ECollisionEnabled::QueryAndProbe) {
