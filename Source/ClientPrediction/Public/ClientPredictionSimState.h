@@ -11,6 +11,7 @@
 #include "ClientPredictionTick.h"
 #include "ClientPredictionPhysState.h"
 #include "ClientPredictionCVars.h"
+#include "Runtime/Experimental/Chaos/Private/Chaos/PhysicsObjectInternal.h"
 
 namespace ClientPrediction {
     template <typename StateType>
